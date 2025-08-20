@@ -12,23 +12,23 @@ node {
     }
 
     stage('Build JAR') {
-        sh "${mvnCMD} clean package -DskipTests"
+        bat "${mvnCMD} clean package -DskipTests"
     }
 
     stage('Build Docker Image') {
-        sh "docker build -t ${dockerImage} ."
+        bat "docker build -t ${dockerImage} ."
     }
 
     stage('Push Docker Image') {
         withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-            sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
-            sh "docker push ${dockerImage}"
+            bat "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
+            bat "docker push ${dockerImage}"
         }
     }
 
     stage('Deploy') {
     withCredentials([file(credentialsId: 'kubeconfig-creds', variable: 'KUBECONFIG_FILE')]) {
-        sh """
+        bat """
            export KUBECONFIG=$KUBECONFIG_FILE
            kubectl apply -f k8s/deployment.yaml
            kubectl rollout status deployment/${appName}-deployment
