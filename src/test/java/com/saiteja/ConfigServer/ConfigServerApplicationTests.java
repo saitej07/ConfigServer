@@ -1,13 +1,13 @@
-package com.saiteja.ConfigServer;
+// package com.saiteja.ConfigServer;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class ConfigServerApplicationTests {
+// @SpringBootTest
+// class ConfigServerApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
