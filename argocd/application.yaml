@@ -11,7 +11,7 @@ spec:
     path: k8s
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: config-server
+    namespace: ms-initial-setup
   syncPolicy:
     automated:
       prune: true
